@@ -31,37 +31,34 @@ namespace _4praktika
     {
       // Получение исходных данных из TextBox
       double x = Convert.ToDouble(textBox1.Text);
-      double y = Convert.ToDouble(textBox2.Text);
-      double z = Convert.ToDouble(textBox3.Text);
+      double y = 0;
       // Ввод исходных данных в окно результатов
       textBox4.Text = "Результаты работы программы ст. Карпусенко А.В. " + Environment.NewLine;
       textBox4.Text += "При X = " + textBox1.Text + Environment.NewLine;
-      textBox4.Text += "При Y = " + textBox2.Text + Environment.NewLine;
-      textBox4.Text += "При Z = " + textBox3.Text + Environment.NewLine;
       // Определение номера выбранной функции
       int n = 0;
       if (radioButton2.Checked) n = 1;
       else if (radioButton3.Checked) n = 2;
       // Вычисление U
-      double u;
+      double u=0;
       switch (n)
       {
         case 0:
-          if ((z - x) == 0) u = y * Math.Sinh(x) * Math.Sinh(x) + z;
-          else if ((z - x) < 0) u = y * Math.Exp(Math.Sinh(x)) - z;
-          else u = y * Math.Sin(Math.Sinh(x)) + z;
+          if (x >= 10) u = x;
+          else if ((x > 0) && (x < 10)) u = 2*Math.Sin(x)+1;
+          else if (x <= 10) u = 0;
           textBox4.Text += "U = " + Convert.ToString(u) + Environment.NewLine;
           break;
         case 1:
-          if ((z - x) == 0) u = y * Math.Cosh(x) * Math.Cosh(x) + z;
-          else if ((z - x) < 0) u = y * Math.Exp(Math.Cosh(x)) - z;
-          else u = y * Math.Sin(Math.Cosh(x)) + z;
+          if (x >= 10) u = x;
+          else if ((x > 0) && (x < 10)) u = 2 *Math.Cos(x) + 1;
+          else if (x <= 10) u = 0;
           textBox4.Text += "U = " + Convert.ToString(u) + Environment.NewLine;
           break;
         case 2:
-          if ((z - x) == 0) u = y * Math.Exp(x) * Math.Exp(x) + z;
-          else if ((z - x) < 0) u = y * Math.Exp(Math.Exp(x)) - z;
-          else u = y * Math.Sin(Math.Exp(x)) + z;
+          if (x >= 10) u = x;
+          else if ((x > 0) && (x < 10)) u = 2*Math.Exp(x) + 1;
+          else if (x <= 10) u = 0;
           textBox4.Text += "U = " + Convert.ToString(u) + Environment.NewLine;
           break;
         default:
