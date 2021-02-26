@@ -41,30 +41,27 @@ namespace _4praktika
       else if (radioButton3.Checked) n = 2;
       // Вычисление U
       double u=0;
+      double z = 0;
       switch (n)
       {
         case 0:
-          if (x >= 10) u = x;
-          else if ((x > 0) && (x < 10)) u = 2*Math.Sin(x)+1;
-          else if (x <= 10) u = 0;
-          textBox4.Text += "U = " + Convert.ToString(u) + Environment.NewLine;
+          z = Math.Sin(x);
           break;
+
         case 1:
-          if (x >= 10) u = x;
-          else if ((x > 0) && (x < 10)) u = 2 *Math.Cos(x) + 1;
-          else if (x <= 10) u = 0;
-          textBox4.Text += "U = " + Convert.ToString(u) + Environment.NewLine;
+          z = Math.Cos(x);
           break;
+
         case 2:
-          if (x >= 10) u = x;
-          else if ((x > 0) && (x < 10)) u = 2*Math.Exp(x) + 1;
-          else if (x <= 10) u = 0;
-          textBox4.Text += "U = " + Convert.ToString(u) + Environment.NewLine;
-          break;
-        default:
-          textBox4.Text += "Решение не найдено" + Environment.NewLine;
+          z = Math.Exp(x);
           break;
       }
+
+      if (x >= 10) u = x;
+      else if ((x > 0) && (x < 10)) u = 2 * z + 1;
+      else if (x <= 10) u = 0;
+      textBox4.Text += "y = " + Convert.ToString(u) + Environment.NewLine;
+
     }
   }
 }
